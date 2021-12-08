@@ -1,4 +1,9 @@
-
+/**
+ * The Card object simply holds a card's value and color
+ * 
+ * @author Mark Eliseo
+ * @version 0.0.1
+ */
 public class Card {
 	
 	private Object value;
