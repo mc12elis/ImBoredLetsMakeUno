@@ -9,13 +9,10 @@ import java.util.ArrayList;
  */
 public class Player {
 	
-	private ArrayList<Card> hand;
+	private ArrayList<Card> hand = new ArrayList<Card>();
 	private int cardCount;
 
-	public Player(ArrayList<Card> hand, int turn) {
-		this.hand = hand;
-		this.cardCount = hand.size();
-	}
+	public Player() {}
 	
 	
 	public void keep(Card input) {

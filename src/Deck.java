@@ -18,18 +18,18 @@ public class Deck {
 		this.discard = discard;
 		deck = new ArrayList<Card>();
 		
-		deck.add(new Card(Integer.valueOf(0), "red"));
-		deck.add(new Card(Integer.valueOf(0), "green"));
-		deck.add(new Card(Integer.valueOf(0), "blue"));
-		deck.add(new Card(Integer.valueOf(0), "yellow"));
+		deck.add(new Card("red0.png", Integer.valueOf(0), "red"));
+		deck.add(new Card("green0.png", Integer.valueOf(0), "green"));
+		deck.add(new Card("blue0.png", Integer.valueOf(0), "blue"));
+		deck.add(new Card("yellow0.png", Integer.valueOf(0), "yellow"));
 		
 		for (int i = 1; i < 10; i++) {
 			Integer value = Integer.valueOf(1);
 			for (int k = 0; k < 2; k++) {
-				Card redCard = new Card(value, "red");
-				Card greenCard = new Card(value, "green");
-				Card blueCard = new Card(value, "blue");
-				Card yellowCard = new Card(value, "yellow");
+				Card redCard = new Card("red"+value+".png", value, "red");
+				Card greenCard = new Card("green"+value+".png", value, "green");
+				Card blueCard = new Card("blue"+value+".png", value, "blue");
+				Card yellowCard = new Card("yellow"+value+".png", value, "yellow");
 				deck.add(redCard);
 				deck.add(greenCard);
 				deck.add(blueCard);
@@ -39,14 +39,14 @@ public class Deck {
 		
 		String[] colors = {"red", "green", "blue", "yellow"};
 		for (int i = 0; i < 4; i++) {
-			deck.add(new Card("skip", colors[i]));
-			deck.add(new Card("reverse", colors[i]));
-			deck.add(new Card("draw2", colors[i]));
+			deck.add(new Card(colors[i]+"skip.png", "skip", colors[i]));
+			deck.add(new Card(colors[i]+"reverse.png", "reverse", colors[i]));
+			deck.add(new Card(colors[i]+"draw2.png", "draw2", colors[i]));
 		}
 		
 		for (int i = 0; i < 4; i++) {
-			deck.add(new Card("wild", "special"));
-			deck.add(new Card("wild4", "special"));
+			deck.add(new Card("specialwild.png", "wild", "special"));
+			deck.add(new Card("specialwild4.png", "wild4", "special"));
 		}
 	}
 	
@@ -65,6 +65,14 @@ public class Deck {
 		deck = discard;
 		discard = new ArrayList<Card>();
 		discard.add(deck.remove(deck.size()-1));
+	}
+	
+	public Card getPlayed() {
+		if (discard.isEmpty()) {
+			return null;
+		} else {
+			return discard.get(discard.size()-1);
+		}
 	}
 	
 }
