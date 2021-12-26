@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class Player {
 	
+	String name;
 	private ArrayList<Card> hand = new ArrayList<Card>();
 	private int cardCount;
 
@@ -29,5 +30,15 @@ public class Player {
 		return hand.isEmpty();
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	protected ArrayList<Card> getHand() {
+		return hand;
+	}
 }

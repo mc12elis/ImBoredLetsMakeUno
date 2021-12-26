@@ -24,7 +24,7 @@ public class Deck {
 		deck.add(new Card("yellow0.png", Integer.valueOf(0), "yellow"));
 		
 		for (int i = 1; i < 10; i++) {
-			Integer value = Integer.valueOf(1);
+			Integer value = Integer.valueOf(i);
 			for (int k = 0; k < 2; k++) {
 				Card redCard = new Card("red"+value+".png", value, "red");
 				Card greenCard = new Card("green"+value+".png", value, "green");
@@ -61,7 +61,7 @@ public class Deck {
 		}
 	}
 	
-	private void reshuffle() {
+	protected void reshuffle() {
 		deck = discard;
 		discard = new ArrayList<Card>();
 		discard.add(deck.remove(deck.size()-1));
@@ -72,6 +72,14 @@ public class Deck {
 			return null;
 		} else {
 			return discard.get(discard.size()-1);
+		}
+	}
+	
+	public static void main(String[] args) {
+		Deck deck = new Deck(new ArrayList<Card>());
+		for (int i = 0; i < 10; i++) {
+			Card thisCard = deck.draw();
+			System.out.println(thisCard.getValue() + "     " + thisCard.getColor());
 		}
 	}
 	

@@ -1,7 +1,5 @@
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -15,6 +13,7 @@ import java.nio.file.Paths;
 public class Card {
 	
 	private Image image;
+	private Image scaledImage;
 	private Object value;
 	private String color;
 	private Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -25,6 +24,7 @@ public class Card {
 		
 		Path path = Paths.get("lib/cards/"+color+value+".png");    
 		this.image = toolkit.getImage(path.toAbsolutePath().toString());
+		this.scaledImage = image.getScaledInstance(100, 150, Image.SCALE_SMOOTH);
 	}
 	
 	public Object getValue() {
@@ -37,5 +37,9 @@ public class Card {
 	
 	public Image getImage() {
 		return image;
+	}
+	
+	public Image getScaledImage() {
+		return scaledImage;
 	}
 }

@@ -11,14 +11,18 @@ import javax.swing.JFrame;
  */
 public class Game {
 	
-	private JFrame frame;
 	private Deck deck;
 	private Player[] players;
-	private Discard discard;
+	private int playerCount;
 	
 	public Game(int playerCount) {
-		players = new Player[playerCount];
+		players = new Player[4];
+		this.playerCount = playerCount;
 		this.deck = new Deck(new ArrayList<Card>());
+		
+		for (int i = 0; i < playerCount; i++) {
+			players[i] = new Player();
+		}
 		
 		for (int i = 0; i < playerCount; i++) {
 			for (int k = 0; k < 7; k++) {
@@ -27,12 +31,15 @@ public class Game {
 		}
 	}
 	
-	public void draw(int player) {
-		Card drawn = deck.draw();
-		
+	public Card draw() {
+		return this.deck.draw();
 	}
 	
-	public static void main(String[] args) {
-		
+	protected Player[] getPlayers() {
+		return players;
+	}
+	
+	public int getPlayerCount() {
+		return this.playerCount;
 	}
 }
